@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>College Event &amp; Volunteer Management</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ LOGIN / SIGN-UP SCREEN ============ -->
+  <section id="authScreen" class="auth">
+    <div class="auth-card">
+      <h1>🎓 EventHub</h1>
+      <p class="muted">College Event &amp; Volunteer Management System</p>
+      <div class="tabs">
+        <button class="tab active" id="tabLogin" type="button">Login</button>
+        <button class="tab" id="tabSignup" type="button">Student Sign-up</button>
+      </div>
+
+      <form id="loginForm">
+        <label>Username<input name="username" required autocomplete="username"></label>
+        <label>Password<input name="password" type="password" required autocomplete="current-password"></label>
+        <button class="btn primary block" type="submit">Login</button>
+        <p class="muted small">Demo accounts (click to fill):</p>
+        <div class="chips">
+          <button type="button" class="chip" data-user="admin" data-pass="admin123">Admin</button>
+          <button type="button" class="chip" data-user="coord1" data-pass="coord123">Coordinator</button>
+          <button type="button" class="chip" data-user="vol1" data-pass="vol123">Volunteer</button>
+          <button type="button" class="chip" data-user="student1" data-pass="student123">Student</button>
+        </div>
+      </form>
+
+      <form id="signupForm" class="hidden">
+        <label>Full name<input name="name" required minlength="2" maxlength="50"></label>
+        <div class="row">
+          <label>Username<input name="username" required pattern="[A-Za-z0-9_]{3,20}" title="3-20 letters, digits or _"></label>
+          <label>Year
+            <select name="year"><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+          </label>
+        </div>
+        <label>Email<input name="email" type="email" required></label>
+        <label>Department<input name="department" maxlength="40" placeholder="e.g. CSBS"></label>
+        <label>Password (min 6)<input name="password" type="password" required minlength="6" maxlength="50"></label>
+        <button class="btn primary block" type="submit">Create account</button>
+      </form>
+      <div id="authMsg" class="msg hidden"></div>
+    </div>
+  </section>
+
+  <!-- ============ MAIN APPLICATION ============ -->
+  <div id="appScreen" class="app hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">🎓 EventHub</div>
+      <nav id="nav"></nav>
+      <div class="userbox">
+        <div id="userName" class="uname"></div>
+        <span id="userRole" class="badge"></span>
+        <button id="logoutBtn" class="btn ghost block" type="button">Logout</button>
+      </div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <button id="menuBtn" class="btn ghost menu-btn" type="button">☰</button>
+        <h2 id="pageTitle">Dashboard</h2>
+        <span id="dashTitle" class="muted"></span>
+      </header>
+      <div id="content" class="content"></div>
+    </main>
+  </div>
+
+  <!-- modal + toast -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-box" id="modalBox"></div>
+  </div>
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

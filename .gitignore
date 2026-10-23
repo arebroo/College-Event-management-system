@@ -1,0 +1,4 @@
+out/
+tests-out/
+data/*.json
+data/*.tmp
